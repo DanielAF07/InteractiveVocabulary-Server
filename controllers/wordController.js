@@ -10,7 +10,11 @@ cloudinary.config({
 
 exports.createWord = async (req, res) => {
   let encoded = imageDataUri.encode(req.file.buffer, req.file.mimetype);
-  let response = await cloudinary.uploader.upload(encoded);
+  let response = await cloudinary.uploader.upload(encoded, {
+    transformation: [
+      {height: 250, crop: "scale"}
+    ]
+  });
   const word = new Word();
   word.word = req.body.word;
   word.grade = req.body.grade;
