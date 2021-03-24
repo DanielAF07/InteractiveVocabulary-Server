@@ -76,3 +76,16 @@ exports.getWords = async (req, res) => {
     res.status(500).send("Hubo un error");
   }
 };
+
+exports.getWordsGrade = async (req, res) => {
+  try {
+    // console.log("getted");
+    const words = await Word.find({
+      grade: req.params.grade
+    });
+    return res.status(200).json({ words });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Hubo un error");
+  }
+};

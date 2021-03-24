@@ -18,6 +18,10 @@ router.delete('/grade/:grade',
   wordController.deleteWords
 )
 
+router.get('/grade/:grade',
+  wordController.getWordsGrade
+)
+
 router.get('/',
   wordController.getWords
 )
